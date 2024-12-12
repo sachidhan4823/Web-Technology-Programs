@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Online Book Store</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f06, #b3ffab);
+            overflow-x: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 50px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            margin: 30px auto;
+            width: 80%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 48px;
+            color: #333;
+            animation: fadeInSlideDown 1s ease-in-out;
+            margin-bottom: 20px;
+        }
+
+        /* Navbar and Search Bar in single container */
+        .nav-search-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 40px 0;
+            padding: 20px;
+            background-color: #eee;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            animation: slideIn 1s ease-out;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            background-color: #333;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #555;
+            transform: scale(1.1);
+        }
+
+        .search-bar input[type="text"] {
+            padding: 12px;
+            font-size: 18px;
+            width: 350px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 12px;
+            font-size: 18px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            background-color: #555;
+        }
+
+        /* Featured Books */
+        .featured-books, .top-selling-books {
+            margin-top: 50px;
+        }
+
+        .book-section {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .book {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            width: 200px;
+            margin: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            animation: zoomIn 0.8s ease-in-out;
+        }
+
+        .book img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .book-title {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .book:hover {
+            transform: scale(1.1);
+        }
+
+        /* Services Section */
+        .services {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 40px 20px;
+            margin-top: 50px;
+            border-radius: 10px;
+            text-align: left;
+            animation: slideUp 1.2s ease-in-out;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .services p {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Keyframes for animations */
+        @keyframes fadeInSlideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Container -->
+    <div class="container">
+        <h1>Welcome to the Online Book Store</h1>
+
+        <!-- Navbar and Search Bar Combined -->
+        <div class="nav-search-container">
+            <!-- Navigation Links -->
+            <div class="navbar">
+                <a href="index.html">Home</a>
+                <a href="books.html">Books</a>
+                <a href="login.html">Login</a>
+                <a href="register.html">Register</a>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <input type="text" placeholder="Search for books...">
+                <button>Search</button>
+            </div>
+        </div>
+
+        <!-- Featured Books Section -->
+        <div class="featured-books">
+            <h2>Featured Books</h2>
+            <div class="book-section">
+                <div class="book">
+                    <img src="book1.jpg" alt="Book 1">
+                    <h3 class="book-title">Book Title 1</h3>
+                    <p>$10.99</p>
+                </div>
+                <div class="book">
+                    <img src="book2.jpg" alt="Book 2">
+                    <h3 class="book-title">Book Title 2</h3>
+                    <p>$12.99</p>
+                </div>
+                <div class="book">
+                    <img src="book3.jpg" alt="Book 3">
+                    <h3 class="book-title">Book Title 3</h3>
+                    <p>$9.99</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Selling Books Section -->
+        <div class="top-selling-books">
+            <h2>Top Selling Books</h2>
+            <div class="book-section">
+                <div class="book">
+                    <img src="book4.jpg" alt="Book 4">
+                    <h3 class="book-title">Book Title 4</h3>
+                    <p>$15.99</p>
+                </div>
+                <div class="book">
+                    <img src="book5.jpg" alt="Book 5">
+                    <h3 class="book-title">Book Title 5</h3>
+                    <p>$13.99</p>
+                </div>
+                <div class="book">
+                    <img src="book6.jpg" alt="Book 6">
+                    <h3 class="book-title">Book Title 6</h3>
+                    <p>$11.99</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Section -->
+        <div class="services">
+            <h2>Our Services & Facilities</h2>
+            <p>
+                At our online book store, we provide a wide variety of books ranging from fiction, non-fiction, academic materials, and more. Whether you are looking for the latest bestsellers or rare classics, we have you covered.
+            </p>
+            <p>
+                We offer fast and reliable delivery to your doorstep, ensuring that your favorite books are just a click away. Our platform is user-friendly and allows you to browse, search, and purchase books seamlessly. With regular discounts and special offers, you are sure to find books at the best prices.
+            </p>
+            <p>
+                Our dedicated customer support team is always available to assist with any inquiries or issues. We aim to provide an enjoyable and convenient shopping experience for all book lovers.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

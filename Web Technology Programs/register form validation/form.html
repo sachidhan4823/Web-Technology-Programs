@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle at center, #141e30, #243b55);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        /* Container styling */
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            width: 420px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            animation: slideIn 1s ease-in-out;
+        }
+
+        h2 {
+            color: #f5f5f5;
+            margin-bottom: 20px;
+            font-size: 30px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
+        /* Marking required fields with * */
+        label {
+            display: block;
+            text-align: left;
+            margin: 12px 0 5px;
+            color: #e5e5e5;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .required {
+            color: #ff6b6b; /* Red for required mark */
+        }
+
+        /* Input field styling */
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 14px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        input[type="text"]::placeholder, input[type="password"]::placeholder {
+            color: #b3b3b3;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-color: #6e8efb;
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 8px rgba(110, 142, 251, 0.5);
+            outline: none;
+        }
+
+        /* Submit Button */
+        input[type="submit"] {
+            background-color: #6e8efb;
+            color: white;
+            padding: 12px 0;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-top: 20px;
+            width: 100%;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #4a69bd;
+            box-shadow: 0 8px 15px rgba(74, 105, 189, 0.3);
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Error message */
+        p {
+            color: #ff6b6b;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            let firstName = document.forms["registrationForm"]["firstName"].value;
+            let lastName = document.forms["registrationForm"]["lastName"].value;
+            let password = document.forms["registrationForm"]["password"].value;
+            let email = document.forms["registrationForm"]["email"].value;
+            let phone = document.forms["registrationForm"]["phone"].value;
+            let address = document.forms["registrationForm"]["address"].value;
+
+            // First Name Validation
+            if (firstName.length < 6 || !/^[A-Za-z]+$/.test(firstName)) {
+                showError('firstNameError', "First name must contain only alphabets and at least 6 characters.");
+                return false;
+            } else {
+                hideError('firstNameError');
+            }
+
+            // Password Validation
+            if (password.length < 6) {
+                showError('passwordError', "Password must be at least 6 characters long.");
+                return false;
+            } else {
+                hideError('passwordError');
+            }
+
+            // Email Validation
+            let emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!emailPattern.test(email)) {
+                showError('emailError', "Please enter a valid email (e.g. name@domain.com).");
+                return false;
+            } else {
+                hideError('emailError');
+            }
+
+            // Phone Number Validation
+            if (!/^\d{10}$/.test(phone)) {
+                showError('phoneError', "Phone number must contain exactly 10 digits.");
+                return false;
+            } else {
+                hideError('phoneError');
+            }
+
+            // Last Name Validation
+            if (lastName.trim() === "") {
+                showError('lastNameError', "Last name should not be empty.");
+                return false;
+            } else {
+                hideError('lastNameError');
+            }
+
+            // Address Validation
+            if (address.trim() === "") {
+                showError('addressError', "Address should not be empty.");
+                return false;
+            } else {
+                hideError('addressError');
+            }
+
+            // If all validations pass
+            alert("Form submitted successfully!");
+            return true;
+        }
+
+        function showError(elementId, message) {
+            document.getElementById(elementId).style.display = "block";
+            document.getElementById(elementId).innerText = message;
+        }
+
+        function hideError(elementId) {
+            document.getElementById(elementId).style.display = "none";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Registration Form</h2>
+        <form name="registrationForm" onsubmit="return validateForm()">
+            <label for="firstName">First Name <span class="required">*</span></label>
+            <input type="text" name="firstName" placeholder="Enter your first name">
+            <p id="firstNameError"></p>
+
+            <label for="lastName">Last Name <span class="required">*</span></label>
+            <input type="text" name="lastName" placeholder="Enter your last name">
+            <p id="lastNameError"></p>
+
+            <label for="password">Password <span class="required">*</span></label>
+            <input type="password" name="password" placeholder="Enter a password">
+            <p id="passwordError"></p>
+
+            <label for="email">E-mail <span class="required">*</span></label>
+            <input type="text" name="email" placeholder="Enter your email">
+            <p id="emailError"></p>
+
+            <label for="phone">Phone Number</label>
+            <input type="text" name="phone" placeholder="Enter your phone number">
+            <p id="phoneError"></p>
+
+            <label for="address">Address</label>
+            <input type="text" name="address" placeholder="Enter your address">
+            <p id="addressError"></p>
+
+            <input type="submit" value="Register">
+        </form>
+    </div>
+</body>
+</html>

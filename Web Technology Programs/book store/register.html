@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Online Book Store</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            animation: backgroundAnimation 20s ease-in-out infinite;
+        }
+
+        /* Background animation */
+        @keyframes backgroundAnimation {
+            0% {
+                background-color: #f3f4f7;
+                background-image: radial-gradient(circle at 10% 20%, #ffeb3b 10%, #f44336 30%);
+            }
+            25% {
+                background-color: #e0f7fa;
+                background-image: radial-gradient(circle at 70% 80%, #03a9f4 10%, #e91e63 30%);
+            }
+            50% {
+                background-color: #ffebee;
+                background-image: radial-gradient(circle at 20% 30%, #8bc34a 10%, #ff9800 30%);
+            }
+            75% {
+                background-color: #e8f5e9;
+                background-image: radial-gradient(circle at 60% 50%, #cddc39 10%, #ff5722 30%);
+            }
+            100% {
+                background-color: #f3f4f7;
+                background-image: radial-gradient(circle at 10% 20%, #ffeb3b 10%, #f44336 30%);
+            }
+        }
+
+        /* Overlay */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            z-index: 1;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 30px;
+            z-index: 10;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .navbar a:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            transform: scale(1.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .register-container {
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 400px;
+            animation: fadeIn 1s ease-in-out;
+            z-index: 5;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+            border-color: #3f87a6;
+            outline: none;
+        }
+
+        button {
+            background-color: #3f87a6;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #2e6e85;
+            transform: scale(1.05);
+        }
+
+        .footer {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* Keyframes for animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay"></div>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="books.html">Books</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+    </div>
+
+    <div class="register-container">
+        <h2>Create a New Account</h2>
+        <form>
+            <input type="text" placeholder="Username" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <input type="password" placeholder="Confirm Password" required>
+            <button type="submit">Register</button>
+        </form>
+        <div class="footer">
+            <p>Already have an account? <a href="login.html" style="color: #3f87a6;">Login here</a></p>
+        </div>
+    </div>
+
+</body>
+</html>

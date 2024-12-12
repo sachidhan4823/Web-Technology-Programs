@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Validate XML File</h1>
+    <textarea id="xmlInput" rows="10" cols="80" placeholder="Paste your XML here..."></textarea>
+    <br><br>
+    <button id="validateXml">Validate XML</button>
+    <div id="output" class="output"></div>
+
+    <script>
+        document.getElementById('validateXml').addEventListener('click', () => {
+            const parser = new DOMParser();
+            const xmlInput = document.getElementById('xmlInput').value;
+
+            // Parse XML input
+            const xmlDoc = parser.parseFromString(xmlInput, "application/xml");
+
+            // Check for parser errors
+            const parserError = xmlDoc.getElementsByTagName("parsererror");
+            const outputDiv = document.getElementById('output');
+
+            if (parserError.length > 0) {
+                outputDiv.innerHTML = `<p class="error">XML Parsing Error: ${parserError[0].textContent}</p>`;
+                return;
+            }
+
+            // If no errors, display success message
+            outputDiv.innerHTML = `<p class="success">The XML document is well-formed!</p>`;
+
+            // Optional: Display structured data from the XML
+            const books = xmlDoc.getElementsByTagName("book");
+            if (books.length > 0) {
+                let outputHtml = `<h2>Book Details</h2><ul>`;
+                for (let book of books) {
+                    const title = book.getElementsByTagName("title")[0]?.textContent || "N/A";
+                    const author = book.getElementsByTagName("author")[0]?.textContent || "N/A";
+                    const isbn = book.getElementsByTagName("isbn")[0]?.textContent || "N/A";
+                    const publication = book.getElementsByTagName("publication")[0]?.textContent || "N/A";
+
+                    outputHtml += `
+                        <li>
+                            <strong>Title:</strong> ${title}<br>
+                            <strong>Author:</strong> ${author}<br>
+                            <strong>ISBN:</strong> ${isbn}<br>
+                            <strong>Publication:</strong> ${publication}
+                        </li>`;
+                }
+                outputHtml += `</ul>`;
+                outputDiv.innerHTML += outputHtml;
+            }
+        });
+    </script>
+</body>
+</html>

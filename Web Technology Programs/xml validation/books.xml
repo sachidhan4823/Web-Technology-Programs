@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<books>
+    <book>
+        <title>Effective Java</title>
+        <author>Joshua Bloch</author>
+        <isbn>9780134685991</isbn>
+        <publication>Pearson Education</publication>
+    </book>
+    <book>
+        <title>Clean Code</title>
+        <author>Robert C. Martin</author>
+        <isbn>9780132350884</isbn>
+        <publication>Prentice Hall</publication>
+    </book>
+    <book>
+        <title>Head First Design Patterns</title>
+        <author>Eric Freeman</author>
+        <isbn>9780596007126</isbn>
+        <publication>O'Reilly Media</publication>
+    </book>
+</books>
